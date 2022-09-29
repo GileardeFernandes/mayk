@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,400;0,700;1,100;1,200;1,400;1,700&display=swap" rel="stylesheet">
+  <title>Mayk</title>
+  <style>
+    :root{
+        --dark-blue: #363F5F;
+        --green: #997754;
+        --light-green: #638C99;
+        --red: #E92929;
+      }
+      
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body::-webkit-scrollbar {
+        width: 12px;               /* width of the entire scrollbar */
+      }
+      
+      body::-webkit-scrollbar-track {
+        background: transparent;        /* color of the tracking area */
+      }
+      
+      body::-webkit-scrollbar-thumb {
+        background-color: #add8e6;    /* color of the scroll thumb */
+        border-radius: 20px;       /* roundness of the scroll thumb */
+      }
+      
+      html{
+        font-size: 93.75%;
+      }
+      
+      body{
+        background: #f6f6f7;
+        font-family: 'Poppins', sans-serif;
+      }
+      
+      .sr-only{
+        display: flex;
+        justify-content: center;
+        font-size: 2rem;
+        margin-bottom: 3rem;
+      }
+      
+      .container{
+        width: 100%;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+      }
+      
+      h2{
+        margin-top: 3.2rem;
+        margin-bottom: 0.8rem;
+        color: var(--dark-blue);
+        font-weight: normal;
+      }
+      
+      a{
+        color: var(--light-green);
+        text-decoration: none;
+      }
+      
+      a:hover{
+        color: var(--green);
+      }
+
+      .img{
+        max-width: 440px;
+        height: 350px;
+        border-radius: 0.25rem;
+        box-shadow: 8px 8px 8px -5px #638C99;
+      }
+
+      .circle{
+        width: 200px;
+        height: auto;
+        border-radius: 8px;
+      }
+      
+      button{
+        width: 100%;
+        height: 50px;
+        border: none;
+        color: white;
+        background: var(--green);
+        padding: 0;
+        border-radius: 0.25rem;
+        cursor: pointer;
+      }
+      
+      button:hover{
+        background: var(--light-green);
+      }
+      
+      .button.new{
+        display: inline-block;
+        margin-bottom: .8rem;
+      }
+      
+      .button.cancel{
+        color: var(--red);
+        border: 2px var(--red) solid;
+        border-radius: 0.25rem;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0.6;
+      }
+      
+      .button.cancel:hover{
+        opacity: 1;
+      }
+      
+      header{
+        background-image: url('./img/2.jpg');
+        background-repeat: no-repeat;
+        padding: 2rem 0 10rem;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      
+      .title{
+        color: #fff;
+        font-family: 'Dancing Script';
+        font-size: 5rem;
+      }
+      #logo{
+        color: #FFF;
+        font-weight: 100;
+      }
+      
+      #balance{
+        margin-top: -8rem;
+      }
+      
+      #balance h2{
+        color: #7c8082;
+        margin-top: 0;
+      }
+      
+      .card{
+        background: #f6f6f7;
+        padding: 3.5rem;
+        margin-bottom: 2rem;
+        color: var(--dark-blue);
+        width: 100%;
+      }
+      
+      .card h3{
+        font-weight: normal;
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      
+      .card p{
+        font-size: 2rem;
+        line-height: 3rem;
+        margin-top: 1rem;
+      }
+      
+      .card.total{
+        background: #add8e6;
+        color: #7c8082;
+      }
+      
+      #data-table{
+        /*display: block;*/
+        width: 100%;
+        border-spacing: 0 0.5rem;
+        overflow-x: auto;
+      }
+      
+      table thead tr th:first-child, 
+      table tbody tr td:first-child{
+        border-radius: 0.25rem 0 0 0.25rem;
+      }
+      
+      table thead tr th:last-child, 
+      table tbody tr td:last-child{
+        border-radius:  0 0.25rem 0.25rem 0;
+      }
+      
+      table thead th{
+        background: white;
+        font-weight: normal;
+        padding: 1rem 2rem;
+        text-align: left;
+        color: #969CB3
+      }
+      
+      table tbody tr{
+        opacity: 0.7;
+      }
+      
+      table tbody tr:hover{
+        opacity: 1;
+      }
+      
+      
+      table tbody td{
+        background: white;
+        padding: 1rem 2rem;
+        color: #969CB3;
+        max-width: 200px;
+      }
+      
+      td.description{
+        color: var(--dark-blue);
+      }
+      
+      td.income{
+        color:  #12A454;
+      }
+      
+      td.expense{
+        color: var(--red);
+      }
+      
+      .modal-overlay{
+        width:100%;
+        height: 100%;
+        background-color: rgba(0,0,0, 0.7);
+        position: fixed;
+        top: 0;
+        display: flex;
+        align-items: center;
+        justify-content:center;
+        opacity: 0;
+        visibility: hidden;
+      }
+      
+      .modal-overlay.active{
+        opacity: 1;
+        visibility: visible;
+      }
+      
+      .modal{
+        background: #F0F2F5;
+        padding: 2.4rem;
+        position: relative;
+        width: 90%;
+        max-width: 500px;
+      }
+      
+      #form{
+        max-width: 500px;
+      }
+      
+      #form{
+        margin-top: 0;
+      }
+      
+      input{
+        border: none;
+        border-radius: 0.2rem;
+        padding: 0.8rem;
+        width: 100%;
+      }
+      
+      .input-group{
+        margin-top: 0.8rem;
+        width: 100%;
+      }
+      
+      .input-group .help{
+        opacity: 0.4;
+      }
+      
+      .input-group.actions{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      
+      .input-group.actions .button,
+      .input-group.actions button{
+        width: 48%;
+      }
+      
+      footer{
+        text-align: center;
+        padding: 2rem 0 2rem;
+        color: var(--dark-blue);
+        opacity: 0.6;
+      }
+
+      .text{
+        text-align: justify;
+      }
+      
+      .desc{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 5rem;
+      }
+
+      .one{
+        margin-left: 2rem;
+        margin-right: 2rem;
+        height: auto;
+        max-width: 600px;
+        border-radius: 0.25rem;
+        box-shadow: 8px 8px 8px -5px #638C99;
+      }
+
+      .inverse{
+        flex-direction: row-reverse;
+      }
+
+      .group{
+        margin-left: 3rem;
+        margin-right: 3rem;
+      }
+      .group-inverse{
+        margin-right: 3rem;
+      }
+
+      .pay{
+        max-width: 25rem;
+      }
+      .payment{
+        width: 200px;
+      }
+      .pix{
+        max-width: 20rem;
+      }
+
+      .central{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+      }
+
+  
+
+      @media (max-width: 800px){
+        html{
+          font-size:87.5%
+        }
+        img{
+          width: 100%;
+        }
+        .img{
+          width: 100%;
+          height: auto;
+          margin-bottom: 2rem;
+        }
+        .title{
+          font-size: 3rem;
+        }
+        header{
+          background-image: url('./img/2.jpg');
+          background-repeat: no-repeat;
+          padding: 2rem 0 10rem;
+          text-align: center;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        .desc{
+          display: flex;
+          flex-direction: column;
+        }
+        .group{
+          margin-left: 0;
+          margin-bottom: 2rem;
+        }
+
+        .one{
+          margin-top: 2rem;
+        }
+
+        #data-table{
+          display: block;
+          width: 100%;
+          border-spacing: 0 0.5rem;
+          overflow-x: auto;
+        }
+        
+        table thead tr th:first-child, 
+        table tbody tr td:first-child{
+          border-radius: 0.25rem 0 0 0.25rem;
+        }
+        
+        table thead tr th:last-child, 
+        table tbody tr td:last-child{
+          border-radius:  0 0.25rem 0.25rem 0;
+        }
+        
+        table thead th{
+          background: white;
+          font-weight: normal;
+          padding: 1rem 2rem;
+          text-align: left;
+          color: #969CB3
+        }
+        
+        table tbody tr{
+          opacity: 0.7;
+        }
+        
+        table tbody tr:hover{
+          opacity: 1;
+        }
+        
+        
+        table tbody td{
+          background: white;
+          padding: 1rem 2rem;
+          color: #969CB3
+        }
+
+        .circle{
+          margin-left: -1rem;
+        }
+
+        .payment{
+          width: 100px;
+        }
+
+      }
+
+      
+   
+
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1 class="title">Chá de fraldas
+        <br>
+    Mayk
+    </h1>
+  </header>
+  <main class="container">
+    <section id="balance">
+      <!-- <h2 class="sr-only">OUR GIFT BUNDLES</h2> -->
+      <div class="card">
+        <div class="desc">
+          <div>
+            <span class="text">
+              <p></p> Olá, pessoal, venho aqui compartilhar com vocês essa nova bênção concedida por Deus em nossas vidas, o pequeno Mayk, 
+             foi possível ver a mão de Deus em toda minha gestação, e agora no finalzinho, fomos agraciados com a chegada de fato 
+             do Mayk em 21/09/2022 as 21h:02, um momento único para nós, especial, extraordinário e cheio de muuuuito amor, esse 
+             pingo de gente tem virado nosso mundo de ponta cabeça, mas do jeitinho dele com muito  chorinho, manha e o uso extremo 
+             fraaaaaalldas kkkkk... Por isso abaixo tem três  QR code com três kits para o pequeno  Mayk 💙💙💙💙... Sintam-se a vontade,  
+             Somos gratos a Deus por todos amigos e familiares que temos e como somos privilegiados por tudo que papai deu céu tem feito.
+             
+             <p></p> laaaaa no final da página, tem um pouquinho mais sobre nosso pequeno Mayk ...forte abraço a todos, vocês fazem parte da nossa história.
+            </span>
+          </div>
+            <!-- <img src="./img/1.jpg" class="img one" alt="Imagem de entrada "> -->
+            <img src="./img/2.jpg" class="one" alt="Imagem de entrada ">
+        </div>
+      </div>
+      <div class="card total">
+        <div class="desc">
+            <img src="./img/4.jpeg" class="img" alt="Imagem de entrada ">
+            <div class="group">
+              <h2>Instruções</h2>
+              
+              <h4> Para ajudar os papais com as fraldinhas do Mayk e ainda concorrer ao sorteio de 1 pix no valor de R$100,00
+              e 2 no valor de R$50,00, siga as instruções.</h4>
+
+              <p></p>1- Escolha na lista a baixo, o kit de sua preferência.
+              <p></p>2-Faça o pix através do QR code ao lado do Kit escolhido.
+              <p></p>3-Mande o comprovante para o whatsapp 81 99999-9245, e você receberá um número para 
+              concorrer ao sorteio, assim que encerrarmos nosso chá online, faremos o sorteio dos prêmios.
+
+              <p></p>Se não quiser participar do sorteio, mas quiser ajudar com outro valor, segue o pix: 81 99999-9245.
+
+              Agradecemos a todos os nossos amigos desde já, forte abraço. 😍😍😍😍
+                            
+            
+            </div>
+            <img src="./img/1.jpg" class="img" alt="Imagem de entrada ">
+            </div>
+            <table id="data-table">
+              <thead>
+                <tr>
+                  <th>Imagem</th>
+                  <th>Descrição</th>
+                  <th>Valor</th>
+                  <th>QR-Code</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <img src="./img/kit/1.png" class="circle">
+                  </td>
+                  <td>Uma fralda Huggies Tripla Proteção </td>
+                  <td><strong>R$40,00</strong></td>
+                  <td><img src="./img/kit/q1.jpg" class="payment" alt="" srcset=""></td>
+                </tr>
+                <tr>
+                  <td>
+                    <img src="./img/kit/2.png" class="circle">
+                  </td>
+                  <td>Uma Fralda M C/ 40+lenço</td>
+                  <td><strong>R$50,00</strong></td>
+                  <td><img src="./img/kit/q2.jpg" class="payment" alt="" srcset=""></td>
+                </tr>
+                <tr>
+                  <td>
+                    <img src="./img/kit/3.png" class="circle">
+                  </td>
+                  <td>Uma Fralda,Lenços Umedecidos,Shampoo e Sabonete</td>
+                  <td><strong>R$79,00</strong></td>
+                  <td><img src="./img/kit/q3.jpg" class="payment" alt="" srcset=""></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="card total" style="display: flex; flex-direction: column;    align-items: center;justify-content: center">
+           <div> <h2 style="margin-bottom: 1rem; font-size: 3rem">Ultrasons do Mayk</h2></div>
+           <p>8 semanas e 2 dias</p>
+           <div><iframe width="560" height="315" src="https://www.youtube.com/embed/CPjukXdtHTM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+           <p>13 semanas</p>
+           <div><iframe width="560" height="315" src="https://www.youtube.com/embed/qq-TBVwIf2E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+           <p>24 semanas e 1 dias</p>
+           <div><iframe width="560" height="315" src="https://www.youtube.com/embed/TZrely5Gcms" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+          </div>
+
+          <div id=”gallery” style="    display: flex;align-items: center;justify-content: center;" >
+             
+              <img src="img/photo12.jpeg" class="gallery__img" alt="Image 2" style="border-radius: 50%;border: solid 1px;box-shadow: 10px 10px 10px 5px darkturquoise;">
+            
+          </div>
+    </section>
+  </main>
+  <footer>
+    <p>Mayk</p>
+  </footer>
+</body>
+
+</html>
