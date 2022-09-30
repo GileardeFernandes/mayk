@@ -54,11 +54,13 @@
         margin-bottom: 3rem;
       }
       
-      .container{
-        width: 100%;
+      .content{
+        width: 20%;
         margin: auto;
         display: flex;
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
       }
       
       h2{
@@ -82,6 +84,11 @@
         height: 350px;
         border-radius: 0.25rem;
         box-shadow: 8px 8px 8px -5px #638C99;
+      }
+      
+      .master{
+        display: flex;
+        flex-direction: row;
       }
 
       .circle{
@@ -123,6 +130,15 @@
       
       .button.cancel:hover{
         opacity: 1;
+      }
+
+      .content{
+        background: #fff;
+        padding: 2rem;
+        margin: 1rem;
+        width: auto;
+        display: flex;
+        flex-direction: column;
       }
       
       header{
@@ -179,59 +195,6 @@
       .card.total{
         background: #add8e6;
         color: #7c8082;
-      }
-      
-      #data-table{
-        /*display: block;*/
-        width: 100%;
-        border-spacing: 0 0.5rem;
-        overflow-x: auto;
-      }
-      
-      table thead tr th:first-child, 
-      table tbody tr td:first-child{
-        border-radius: 0.25rem 0 0 0.25rem;
-      }
-      
-      table thead tr th:last-child, 
-      table tbody tr td:last-child{
-        border-radius:  0 0.25rem 0.25rem 0;
-      }
-      
-      table thead th{
-        background: white;
-        font-weight: normal;
-        padding: 1rem 2rem;
-        text-align: left;
-        color: #969CB3
-      }
-      
-      table tbody tr{
-        opacity: 0.7;
-      }
-      
-      table tbody tr:hover{
-        opacity: 1;
-      }
-      
-      
-      table tbody td{
-        background: white;
-        padding: 1rem 2rem;
-        color: #969CB3;
-        max-width: 200px;
-      }
-      
-      td.description{
-        color: var(--dark-blue);
-      }
-      
-      td.income{
-        color:  #12A454;
-      }
-      
-      td.expense{
-        color: var(--red);
       }
       
       .modal-overlay{
@@ -338,7 +301,8 @@
         max-width: 25rem;
       }
       .payment{
-        width: 200px;
+        max-width: 100px;
+        max-height: 100px;
       }
       .pix{
         max-width: 20rem;
@@ -389,46 +353,6 @@
           margin-top: 2rem;
         }
 
-        #data-table{
-          display: block;
-          width: 100%;
-          border-spacing: 0 0.5rem;
-          overflow-x: auto;
-        }
-        
-        table thead tr th:first-child, 
-        table tbody tr td:first-child{
-          border-radius: 0.25rem 0 0 0.25rem;
-        }
-        
-        table thead tr th:last-child, 
-        table tbody tr td:last-child{
-          border-radius:  0 0.25rem 0.25rem 0;
-        }
-        
-        table thead th{
-          background: white;
-          font-weight: normal;
-          padding: 1rem 2rem;
-          text-align: left;
-          color: #969CB3
-        }
-        
-        table tbody tr{
-          opacity: 0.7;
-        }
-        
-        table tbody tr:hover{
-          opacity: 1;
-        }
-        
-        
-        table tbody td{
-          background: white;
-          padding: 1rem 2rem;
-          color: #969CB3
-        }
-
         .circle{
           margin-left: -1rem;
         }
@@ -437,10 +361,18 @@
           width: 100px;
         }
 
+        .master{
+          display: flex;
+          flex-direction: column;
+        }
+  
+        .new_content{
+          display: flex;
+          flex-direction: column;
+        }
       }
 
-      
-   
+
 
   </style>
 </head>
@@ -495,42 +427,33 @@
             </div>
             <img src="./img/1.jpg" class="img" alt="Imagem de entrada ">
             </div>
-            <table id="data-table">
-              <thead>
-                <tr>
-                  <th>Imagem</th>
-                  <th>Descrição</th>
-                  <th>Valor</th>
-                  <th>QR-Code</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    <img src="./img/kit/1.png" class="circle">
-                  </td>
-                  <td>Uma fralda Huggies Tripla Proteção </td>
-                  <td><strong>R$40,00</strong></td>
-                  <td><img src="./img/kit/q1.jpg" class="payment" alt="" srcset=""></td>
-                </tr>
-                <tr>
-                  <td>
-                    <img src="./img/kit/2.png" class="circle">
-                  </td>
-                  <td>Uma Fralda M C/ 40+lenço</td>
-                  <td><strong>R$50,00</strong></td>
-                  <td><img src="./img/kit/q2.jpg" class="payment" alt="" srcset=""></td>
-                </tr>
-                <tr>
-                  <td>
-                    <img src="./img/kit/3.png" class="circle">
-                  </td>
-                  <td>Uma Fralda,Lenços Umedecidos,Shampoo e Sabonete</td>
-                  <td><strong>R$79,00</strong></td>
-                  <td><img src="./img/kit/q3.jpg" class="payment" alt="" srcset=""></td>
-                </tr>
-              </tbody>
-            </table>
+            <div class="master">
+
+              <div class="content">
+                <div class="new_content" style="display: flex; align-items: center; justify-content: space-between">
+                  <img src="./img/kit/1.png" style="margin-right: 1rem;" class="circle">
+                <img src="./img/kit/q1.jpg" class="payment" alt="" srcset="">
+                </div>
+                <strong>R$40,00</strong>
+                <p style="font-size: 1.5rem;">Uma fralda Huggies Tripla Proteção</p>
+              </div>
+              <div class="content">
+                <div class="new_content" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 2rem">
+                  <img src="./img/kit/2.png" style="margin-right: 1rem;" class="circle">
+                <img src="./img/kit/q2.jpg" class="payment" alt="" srcset="">
+                </div>
+                <strong>R$50,00</strong>
+                <p style="font-size: 1.5rem;">Uma Fralda M C/ 40+lenço</p>
+              </div>
+              <div class="content">
+                <div class="new_content" style="display: flex; align-items: center; justify-content: space-between; margin-top: 3rem">
+                  <img src="./img/kit/3.png" style="margin-right: 1rem;" class="circle">
+                <img src="./img/kit/q3.jpg" class="payment" alt="" srcset="">
+                </div>
+                <strong>R$79,00</strong>
+                <p style="font-size: 1.5rem;">Uma Fralda,Lenços Umedecidos,Shampoo e Sabonete</p>
+              </div>
+            </div>
           </div>
           <div class="card total" style="display: flex; flex-direction: column;    align-items: center;justify-content: center">
            <div> <h2 style="margin-bottom: 1rem; font-size: 3rem">Ultrasons do Mayk</h2></div>
